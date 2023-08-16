@@ -1,6 +1,6 @@
 return {
-  -- colorscheme = "nord",
-  colorscheme = "sonokai",
+  colorscheme = "onenord",
+  --colorscheme = "nightfly",
   options = {
     g = {
     copilot_no_tab_map = true,
@@ -8,15 +8,30 @@ return {
     copilot_tab_fallback = "",
     },
   },
-
-  plugins= {
-    -- {
-    --   "shaunsingh/nord.nvim",
-    --   init = function()
-    --     vim.g.nord_disable_background = true
-    --   end,
-    -- },
-
+   plugins= {
+   {
+      "sainnhe/sonokai",
+      init = function() -- init function runs before the plugin is loaded
+        vim.g.sonokai_style = "shusia"
+        vim.g.sonokai_transparent_background = 2
+      end,
+    },
+   {
+       "rmehri01/onenord.nvim",
+      init = function()
+        require('onenord').setup({
+          disable = {
+           background = true,
+          },
+        })
+      end,
+    },
+    {
+      "bluz71/vim-nightfly-colors",
+      init = function()
+        vim.g.nightflyCursorColor = 1
+      end,
+    },
   {
   'phaazon/hop.nvim',
   branch = 'v2', -- optional but strongly recommended
@@ -25,15 +40,7 @@ return {
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   },
-    {
-      "sainnhe/sonokai",
-      init = function() -- init function runs before the plugin is loaded
-        vim.g.sonokai_style = "shusia"
-        vim.g.sonokai_transparent_background = 2
-      end,
-    },
-
-    {
+        {
      "goolord/alpha-nvim",
       opts = function(_, opts) -- override the options using lazy.nvim
         opts.section.header.val = { -- change the header section value
