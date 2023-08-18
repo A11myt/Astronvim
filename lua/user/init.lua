@@ -1,6 +1,5 @@
 return {
   colorscheme = "onenord",
-  --colorscheme = "nightfly",
   options = {
     g = {
     copilot_no_tab_map = true,
@@ -8,8 +7,9 @@ return {
     copilot_tab_fallback = "",
     },
   },
-   plugins= {
-   {
+
+  plugins= {
+  {
       "sainnhe/sonokai",
       init = function() -- init function runs before the plugin is loaded
         vim.g.sonokai_style = "shusia"
@@ -26,11 +26,27 @@ return {
         })
       end,
     },
+
     {
       "bluz71/vim-nightfly-colors",
       init = function()
         vim.g.nightflyCursorColor = 1
       end,
+    },
+    {
+      "overcache/NeoSolarized",
+      init = function ()
+        vim.g.neosolarized_style = "dark"
+      end,
+    },
+    {
+      "catppuccin/nvim",
+      init = function ()
+        require("catppuccin").setup({
+          flavor = "mocha",
+          transparent_background = true,
+        })
+      end
     },
   {
   'phaazon/hop.nvim',
