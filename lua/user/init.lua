@@ -17,16 +17,16 @@ return {
       end,
     },
    {
-       "rmehri01/onenord.nvim",
+      "rmehri01/onenord.nvim",
       init = function()
         require('onenord').setup({
           disable = {
-           background = true,
+            background = true,
+            borders = true,
           },
         })
       end,
     },
-
     {
       "bluz71/vim-nightfly-colors",
       init = function()
@@ -48,6 +48,14 @@ return {
         })
       end
     },
+    -- {
+    -- "lukas-reineke/virt-column.nvim",
+    --   init = function()
+    --   require("virt-column").setup({
+    --     char = "║",
+    --           })
+    --   end
+    -- },
   {
   'phaazon/hop.nvim',
   branch = 'v2', -- optional but strongly recommended

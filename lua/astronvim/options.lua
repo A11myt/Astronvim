@@ -6,6 +6,8 @@ if vim.fn.has "nvim-0.9" == 1 then
 end
 local options = astronvim.user_opts("options", {
   opt = {
+    --colorcolumn = "80", -- disable colorcolumn
+    textwidth = 80,
     breakindent = true, -- wrap indent to match  line start
     clipboard = "unnamedplus", -- connection to the system clipboard
     cmdheight = 0, -- hide command line unless needed
@@ -28,6 +30,7 @@ local options = astronvim.user_opts("options", {
     number = true, -- show numberline
     preserveindent = true, -- preserve indent structure as much as possible
     pumheight = 10, -- height of the pop up menu
+    --not sure about this one
     relativenumber = true, -- show relative numberline
     scrolloff = 8, -- number of lines to keep above and below the cursor
     shiftwidth = 2, -- number of space inserted for indentation
@@ -44,8 +47,9 @@ local options = astronvim.user_opts("options", {
     undofile = true, -- enable persistent undo
     updatetime = 300, -- length of time to wait before triggering the plugin
     virtualedit = "block", -- allow going past end of line in visual block mode
-    wrap = false, -- disable wrapping of lines longer than the width of window
+    wrap = true, -- disable wrapping of lines longer than the width of window
     writebackup = false, -- disable making a backup before overwriting a file
+    guifont = "monospace:h17", -- the font used in graphical neovim applications
   },
   g = {
     mapleader = " ", -- set leader key
