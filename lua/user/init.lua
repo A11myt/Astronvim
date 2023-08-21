@@ -1,106 +1,41 @@
-return {
+--              AstroNvim Configuration Table
+-- All configuration changes should go inside of the table below
+local config = {
   colorscheme = "onenord",
+  highlights = {
+    -- duskfox = { -- a table of overrides/changes to the default
+    --   Normal = { bg = "#000000" },
+    -- },
+    onenord = { -- a table of overrides/changes to the default
+      Normal = { fg = "#00ff00" },
+    },
+    -- default_theme = function(highlights) -- or a function that returns a new table of colors to set
+    --   local C = require "default_theme.colors"
+    --   highlights.Normal = { fg = C.fg, bg = C.bg }
+    --   return highlights
+    -- end,
+  },
   options = {
+    opt ={
+  relativenumber = true,
+      textwidth = 80,
+      colorcolumn = "80",
+    },
     g = {
     copilot_no_tab_map = true,
     opilot_assume_mapped = true,
     copilot_tab_fallback = "",
     },
   },
+  mappings = require "user.my-mappings",
+  -- Configure plugins
+  plugins = require "user.my-plugin",
+  -- lsp = require "user.lsp",
 
-  plugins= {
-  {
-      "sainnhe/sonokai",
-      init = function() -- init function runs before the plugin is loaded
-        vim.g.sonokai_style = "shusia"
-        vim.g.sonokai_transparent_background = 2
-      end,
-    },
-   {
-      "rmehri01/onenord.nvim",
-      init = function()
-        require('onenord').setup({
-          disable = {
-            background = true,
-            borders = true,
-          },
-        })
-      end,
-    },
-    {
-      "bluz71/vim-nightfly-colors",
-      init = function()
-        vim.g.nightflyCursorColor = 1
-      end,
-    },
-    {
-      "overcache/NeoSolarized",
-      init = function ()
-        vim.g.neosolarized_style = "dark"
-      end,
-    },
-    {
-      "catppuccin/nvim",
-      init = function ()
-        require("catppuccin").setup({
-          flavor = "mocha",
-          transparent_background = true,
-        })
-      end
-    },
-    -- {
-    -- "lukas-reineke/virt-column.nvim",
-    --   init = function()
-    --   require("virt-column").setup({
-    --     char = "║",
-    --           })
-    --   end
-    -- },
-  {
-  'phaazon/hop.nvim',
-  branch = 'v2', -- optional but strongly recommended
-  config = function()
-    -- you can configure Hop the way you like here; see :h hop-config
-    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
-  },
-        {
-     "goolord/alpha-nvim",
-      opts = function(_, opts) -- override the options using lazy.nvim
-        opts.section.header.val = { -- change the header section value
-        "   █████    ██   ██  ███    ███ ██    ██ ████████",
-        "  ██   ██ ████ ████  ████  ████  ██  ██     ██   ",
-        "  ███████   ██   ██  ██ ████ ██   ████      ██   ",
-        "  ██   ██   ██   ██  ██  ██  ██    ██       ██   ",
-        "  ██   ██   ██   ██  ██      ██    ██       ██   ",
-        "",  
-        "                      My Custom                  ",
-        "                  Dashboard Header               ",
-        }
-      end,
-    },
-    {
-   'zbirenbaum/copilot.lua',
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function(plugin, opts)
-    require('copilot').setup({
-      suggestion = {
-        auto_trigger = true,
-        accept = "<fn-l>",
-        accept_word = false,
-        accept_line = false,
-        next = "<fn-]>",
-        prev = "<fn-[>",
-        dismiss = "<C-]>",
-        },
-      })
-    end
-  },
-},
   polish = function()
-   local copilot_options = { silent = true, expr = true, script = true } 
+   local copilot_options = { silent = true, expr = true, script = true }
    vim.api.nvim_set_keymap("i", "<C-l>", "copilot#Accept(<Tab>)", copilot_options)
   end,
 }
+return config
 

@@ -6,7 +6,6 @@ if vim.fn.has "nvim-0.9" == 1 then
 end
 local options = astronvim.user_opts("options", {
   opt = {
-    --colorcolumn = "80", -- disable colorcolumn
     textwidth = 80,
     breakindent = true, -- wrap indent to match  line start
     clipboard = "unnamedplus", -- connection to the system clipboard
